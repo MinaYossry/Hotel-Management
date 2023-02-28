@@ -1,0 +1,57 @@
+﻿<Window x:Class="Hotel_Management___FrontEnd.FoodMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hotel_Management___FrontEnd"
+        mc:Ignorable="d"
+        Title="FoodMenu" Height="450" Width="800" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Margin="5">Food and Menu</Label>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Background="LightGray" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Margin="5">Food Selection</Label>
+                <UniformGrid Grid.Row="1">
+                    <DockPanel Margin="5">
+                        <local:CueBannerTextBox Margin="5" DockPanel.Dock="Bottom" x:Name="text_BreakfastCount" CueBanner="Quantity ?" InputScope="Number" IsEnabled="False"></local:CueBannerTextBox>
+                        <CheckBox DockPanel.Dock="Bottom" x:Name="Check_Breakfast" Margin="10 2" Checked="Check_Breakfast_Checked" Unchecked="Check_Breakfast_Checked">Breakfast ($7)</CheckBox>
+                        <Image DockPanel.Dock="Top" Source="./assets/breakfast.png" ></Image>
+                    </DockPanel>
+
+                    <DockPanel Margin="5">
+                        <local:CueBannerTextBox Margin="5" DockPanel.Dock="Bottom" x:Name="text_LunchCount" CueBanner="Quantity ?" InputScope="Number" IsEnabled="False"></local:CueBannerTextBox>
+                        <CheckBox DockPanel.Dock="Bottom" x:Name="Check_Lunch" Margin="10 2" Checked="Check_Lunch_Checked" Unchecked="Check_Lunch_Checked">Lunch ($15)</CheckBox>
+                        <Image DockPanel.Dock="Top"  Source="./assets/lunch_new_png.png"></Image>
+                    </DockPanel>
+
+                    <DockPanel Margin="5">
+                        <local:CueBannerTextBox Margin="5" DockPanel.Dock="Bottom" x:Name="text_DinnerCount"  CueBanner="Quantity ?" InputScope="Number" IsEnabled="False"></local:CueBannerTextBox>
+                        <CheckBox DockPanel.Dock="Bottom" x:Name="Check_Dinner" Margin="10 2" Checked="Check_Dinner_Checked" Unchecked="Check_Dinner_Checked">Dinner ($15)</CheckBox>
+                        <Image DockPanel.Dock="Top" Source="./assets/Dinner_new_png.png" Height="113"></Image>
+                    </DockPanel>
+                </UniformGrid>
+            </Grid>
+            <DockPanel Margin="5" Grid.Column="1" LastChildFill="True">
+                <Button x:Name="btn_Submit" IsDefault="True" DockPanel.Dock="Bottom" Margin="5" Click="btn_Submit_Click">Next</Button>
+                <DockPanel VerticalAlignment="Stretch" DockPanel.Dock="Top" Margin="5" Background="LightGray" HorizontalAlignment="Stretch" >
+                    <Label DockPanel.Dock="Top" Margin="5">Special Needs</Label>
+                    <CheckBox x:Name="Check_Cleaning" DockPanel.Dock="Top" Margin="15">Cleaning</CheckBox>
+                    <CheckBox x:Name="Check_Towels" DockPanel.Dock="Top" Margin="15">Towels</CheckBox>
+                    <CheckBox x:Name="Check_SweetestSurprise" DockPanel.Dock="Top" Margin="15">Sweetest Surprise</CheckBox>
+                </DockPanel>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</Window>

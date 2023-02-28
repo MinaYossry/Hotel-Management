@@ -1,0 +1,55 @@
+﻿<Window x:Class="Hotel_Management___FrontEnd.Frontend"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hotel_Management___FrontEnd"
+        mc:Ignorable="d"
+        Title="Frontend" Height="720" Width="1280" HorizontalAlignment="Left" VerticalAlignment="Top" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Height="671" Width="1165">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" FontSize="36" FontWeight="Bold" Margin="0,-4,0,4">Hotel Reservation</Label>
+        <TabControl Grid.Row="1">
+            <TabItem IsSelected="True" Header="Reservation" BorderBrush="#FF06E824" BorderThickness="0,0,0,2">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFFFFDFD" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <local:ReservationPage Loaded="ReservationPage_Loaded" />
+            </TabItem>
+            <TabItem Header="Universal Search" BorderBrush="#FF06E824" BorderThickness="0,0,0,2">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFFFFDFD" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <local:UniversalSearch x:Name="UniversalSearchTap"></local:UniversalSearch>
+            </TabItem>
+            <TabItem Header="Reservation Adv. view" BorderBrush="#FF06E824" BorderThickness="0,0,0,2">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFFFFDFD" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+            <DataGrid Name="ReservationDataGrid"/>
+            </TabItem>
+            <TabItem Header="Room availibilty" BorderBrush="#FF06E824" BorderThickness="0,0,0,2">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFFFFDFD" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <local:RoomAvailibiltyTap x:Name="RoomAvailibiltyTap"/>
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
