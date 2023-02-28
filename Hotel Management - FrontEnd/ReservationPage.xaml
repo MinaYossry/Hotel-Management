@@ -199,9 +199,9 @@
                 <ComboBoxItem Content="510"/>
             </ComboBox>
             <Label Grid.Row="3" Grid.ColumnSpan="2" Content="Entry Date" />
-            <DatePicker x:Name="Res_EntryDate" Grid.Row="4" Grid.ColumnSpan="2" Margin="5" SelectedDate="{x:Static sys:DateTime.Today}"></DatePicker>
+            <DatePicker x:Name="Res_EntryDate" Grid.Row="4" Grid.ColumnSpan="2" Margin="5" ></DatePicker>
             <Label Grid.Row="5" Grid.ColumnSpan="2" Content="Departure Date" />
-            <DatePicker x:Name="Res_DepartureDate" Grid.Row="6" Grid.ColumnSpan="2" Margin="5" SelectedDate="{x:Static sys:DateTime.Today}"></DatePicker>
+            <DatePicker x:Name="Res_DepartureDate" Grid.Row="6" Grid.ColumnSpan="2" Margin="5" ></DatePicker>
             <Button x:Name="btn_FoodMenu" Grid.Row="7" Grid.ColumnSpan="2" Margin="5" Click="btn_FoodMenu_Click" >Food and Menu</Button>
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="5" Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal">
                 <CheckBox x:Name="Res_CheckIn" Margin="10 0">Chech In?</CheckBox>
@@ -209,7 +209,7 @@
                 <CheckBox x:Name="Res_FoodStatus" Margin="10 0" IsEnabled="False">Food/Supply Status?</CheckBox>
             </StackPanel>
             <Button x:Name="btn_FinalizeBill" Grid.Row="9" Grid.ColumnSpan="2" Margin="5" Click="btn_FinalizeBill_Click" >Finalize bill</Button>
-            <Button x:Name="btn_Submit" Grid.Row="10" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden" >Submit</Button>
+            <Button x:Name="btn_Submit" Grid.Row="10" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden" Click="btn_Submit_Click" >Submit</Button>
         </Grid>
         <Grid Grid.Column="2" Margin="5" Background="LightGray">
             <Grid.RowDefinitions>

@@ -2,6 +2,7 @@
 using Reservation__DbContext.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace Hotel_Management___FrontEnd
     public partial class Frontend : Window
     {
         Reservation_Context reservation_Context;
-        List<Reservation> reservations;
+        BindingList<Reservation> reservations;
 
         public Frontend()
         {
@@ -31,16 +32,11 @@ namespace Hotel_Management___FrontEnd
             reservation_Context = new();
 
             reservation_Context.Reservations.Load();
-            reservations = reservation_Context.Reservations.Local.ToList();
-            ReservationDataGrid.ItemsSource =  reservations;
-
-            var OccupiedRooms = reservations.Where(r => r.CheckIn);
-            var ReservedRooms = reservations.Where(r => !r.CheckIn);
-
-            InsertRooms(OccupiedRooms, RoomAvailibiltyTap.OccupiedRoomsPanel);
-            InsertRooms(ReservedRooms, RoomAvailibiltyTap.ReservedRoomsPanel);
+            reservations = reservation_Context.Reservations.Local.ToBindingList();
+            ReservationDataGrid.ItemsSource = reservations;
 
             UniversalSearchTap.Reservation_Context = reservation_Context;
+            ReservationPageTap.Reservation_Context = reservation_Context;
         }
 
         private void InsertRooms(IEnumerable<Reservation> Rooms, ListBox Target)
@@ -83,6 +79,22 @@ namespace Hotel_Management___FrontEnd
         private void ReservationPage_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TabItem currentTab = e.AddedItems[0] as TabItem;
+            if (currentTab is not null && currentTab == RoomAvailable)
+            {
+                RoomAvailibiltyTap.OccupiedRoomsPanel.Items.Clear();
+                RoomAvailibiltyTap.ReservedRoomsPanel.Items.Clear();
+
+                var OccupiedRooms = reservations.Where(r => r.CheckIn);
+                var ReservedRooms = reservations.Where(r => !r.CheckIn);
+
+                InsertRooms(OccupiedRooms, RoomAvailibiltyTap.OccupiedRoomsPanel);
+                InsertRooms(ReservedRooms, RoomAvailibiltyTap.ReservedRoomsPanel);
+            }
         }
     }
 }

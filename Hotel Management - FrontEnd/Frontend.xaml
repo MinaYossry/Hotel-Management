@@ -12,7 +12,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" FontSize="36" FontWeight="Bold" Margin="0,-4,0,4">Hotel Reservation</Label>
-        <TabControl Grid.Row="1">
+        <TabControl Grid.Row="1" SelectionChanged="TabControl_SelectionChanged">
             <TabItem IsSelected="True" Header="Reservation" BorderBrush="#FF06E824" BorderThickness="0,0,0,2">
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1">
@@ -20,7 +20,7 @@
                         <GradientStop Color="#FFFFFDFD" Offset="1"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
-                <local:ReservationPage Loaded="ReservationPage_Loaded" />
+                <local:ReservationPage x:Name="ReservationPageTap" />
             </TabItem>
             <TabItem Header="Universal Search" BorderBrush="#FF06E824" BorderThickness="0,0,0,2">
                 <TabItem.Background>
@@ -40,7 +40,7 @@
                 </TabItem.Background>
             <DataGrid Name="ReservationDataGrid"/>
             </TabItem>
-            <TabItem Header="Room availibilty" BorderBrush="#FF06E824" BorderThickness="0,0,0,2">
+            <TabItem x:Name="RoomAvailable" Header="Room availibilty" BorderBrush="#FF06E824" BorderThickness="0,0,0,2">
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1">
                         <GradientStop Color="#FFF0F0F0"/>

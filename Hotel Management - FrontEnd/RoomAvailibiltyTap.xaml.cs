@@ -25,6 +25,9 @@ namespace Hotel_Management___FrontEnd
             InitializeComponent();
         }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }
