@@ -5,10 +5,6 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel Management - FrontEnd", "Hotel Management - FrontEnd\Hotel Management - FrontEnd.csproj", "{42B13F78-A97A-4D60-AF66-9535D5E482AC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Login - DbContext", "Login - DbContext\Login - DbContext.csproj", "{F1CB71F5-341C-4A27-9DD2-AE033DA197BB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reservation - DbContext", "Reservation - DbContext\Reservation - DbContext.csproj", "{0687A512-8523-4AB1-81BA-DFA940ADEDDB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseContext", "DatabaseContext\DatabaseContext.csproj", "{27389C52-D110-4445-BB6D-B2033F827403}"
 EndProject
 Global
@@ -21,14 +17,6 @@ Global
 		{42B13F78-A97A-4D60-AF66-9535D5E482AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42B13F78-A97A-4D60-AF66-9535D5E482AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42B13F78-A97A-4D60-AF66-9535D5E482AC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F1CB71F5-341C-4A27-9DD2-AE033DA197BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1CB71F5-341C-4A27-9DD2-AE033DA197BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1CB71F5-341C-4A27-9DD2-AE033DA197BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1CB71F5-341C-4A27-9DD2-AE033DA197BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0687A512-8523-4AB1-81BA-DFA940ADEDDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0687A512-8523-4AB1-81BA-DFA940ADEDDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0687A512-8523-4AB1-81BA-DFA940ADEDDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0687A512-8523-4AB1-81BA-DFA940ADEDDB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{27389C52-D110-4445-BB6D-B2033F827403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{27389C52-D110-4445-BB6D-B2033F827403}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27389C52-D110-4445-BB6D-B2033F827403}.Release|Any CPU.ActiveCfg = Release|Any CPU
