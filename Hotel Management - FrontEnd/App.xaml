@@ -75,6 +75,7 @@
                             <Border CornerRadius="10"
                             Height="{Binding Height, ElementName=ThemeBox}"
                             Width="{Binding Width, ElementName=ThemeBox}"
+                                    BorderThickness="1"
                             Background="white">
                                 <Grid>
                                     <TextBox Margin="1"

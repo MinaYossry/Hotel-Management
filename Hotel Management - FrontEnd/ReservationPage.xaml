@@ -47,7 +47,7 @@
                     Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="Gender"/>   
             
             <Label Grid.Row="6" Grid.ColumnSpan="2">Phone Number</Label>
-            <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Phone Number" Text="{Binding Path=PhoneNumber, Mode=TwoWay}"  x:Name="Res_PhoneNumber" Grid.Row="7" Grid.ColumnSpan="2"  BorderBrush="#FFABADB3" ></TextBox>
+            <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Phone Number" Text="{Binding Path=PhoneNumber, Mode=TwoWay}"  x:Name="Res_PhoneNumber" Grid.Row="7" Grid.ColumnSpan="2"  BorderBrush="#FFABADB3" LostFocus="Res_PhoneNumber_LostFocus" ></TextBox>
             <Label Grid.Row="8" Grid.ColumnSpan="2">Email</Label>
             <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Email Address" Text="{Binding Path=EmailAddress, Mode=TwoWay}" x:Name="Red_Email" Grid.Row="9" Grid.ColumnSpan="2"  BorderBrush="#FFABADB3" ></TextBox>
             <Label Grid.Row="10" Grid.ColumnSpan="2">Adress</Label>
@@ -96,7 +96,7 @@
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="5" Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal">
                 <CheckBox IsChecked="{Binding Path=CheckIn, Mode=TwoWay}" x:Name="Res_CheckIn" Margin="10 0">Chech In?</CheckBox>
                 <CheckBox  x:Name="Res_SendSMS" Margin="10 0">Send SMS?</CheckBox>
-                <CheckBox IsChecked="{Binding Path=SupplyStatus, Mode=TwoWay}" x:Name="Res_FoodStatus" Margin="10 0" IsEnabled="False">Food/Supply Status?</CheckBox>
+                <CheckBox IsChecked="{Binding Path=SupplyStatus, Mode=TwoWay}" x:Name="Res_FoodStatus" Margin="10 0" IsEnabled="False" Checked="Res_FoodStatus_Checked" Unchecked="Res_FoodStatus_Checked">Food/Supply Status?</CheckBox>
             </StackPanel>
             <Button x:Name="btn_FinalizeBill" Grid.Row="9" Grid.ColumnSpan="2" Margin="5" Click="btn_FinalizeBill_Click" >Finalize bill</Button>
             <Button x:Name="btn_Submit" Grid.Row="10" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden" Click="btn_Submit_Click" >Submit</Button>
@@ -119,7 +119,7 @@
 
             </ComboBox>
             <Button x:Name="btn_Update" Grid.Row="7" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden" Click="btn_Update_Click" >Update</Button>
-            <Button x:Name="btn_Delete" Grid.Row="8" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden" >Delete</Button>
+            <Button x:Name="btn_Delete" Grid.Row="8" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden" Click="btn_Delete_Click" >Delete</Button>
             <Button x:Name="btn_EditReservation" Grid.Row="9" Grid.ColumnSpan="2" Margin="5" Click="btn_EditReservation_Click" >Edit Existing Reservation</Button>
             <Button x:Name="btn_NewReservation" Grid.Row="10" Grid.ColumnSpan="2" Margin="5" Click="btn_NewReservation_Click" >New Reservation</Button>
         </Grid>

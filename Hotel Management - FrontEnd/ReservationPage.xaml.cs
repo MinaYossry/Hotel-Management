@@ -1,7 +1,9 @@
-﻿using Reservation__DbContext.Models;
+﻿using Microsoft.Identity.Client;
+using Reservation__DbContext.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -184,7 +186,11 @@ namespace Hotel_Management___FrontEnd
         {
             if (SelectedReservation.BreakFast == 0 && SelectedReservation.Lunch == 0 && SelectedReservation.Dinner == 0 && !SelectedReservation.Cleaning && !SelectedReservation.Towel && !SelectedReservation.SSurprise) 
             {
-                SelectedReservation.SupplyStatus = true;
+                Res_FoodStatus.IsChecked = true;
+            }
+            else
+            {
+                Res_FoodStatus.IsChecked = false;
             }
 
             if (CalculateBill())
@@ -296,6 +302,7 @@ namespace Hotel_Management___FrontEnd
                     if(Reservation_Context.SaveChanges() > 0)
                     {
                         MessageBox.Show($"Reservation with ID: {SelectedReservation.Id} was inserted successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        SendSMS();
                     }
                 }
                 catch
@@ -344,6 +351,67 @@ namespace Hotel_Management___FrontEnd
             btn_Delete.Visibility = Visibility.Hidden;
             btn_Update.Visibility = Visibility.Hidden;
             Res_SelectReservation.Visibility = Visibility.Hidden;
+        }
+
+        private void btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            int Id = SelectedReservation.Id;
+
+            try
+            {
+                Reservation_Context.Remove(SelectedReservation);
+                if (Reservation_Context.SaveChanges() > 0)
+                {
+                    MessageBox.Show($"Reservation with ID: {Id} was Deleted successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    SelectedReservation = new() { BirthDay = "birth" };
+                }
+            }
+            catch
+            {
+                MessageBox.Show($"Couldn't Delete reservation", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void Res_PhoneNumber_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (ulong.TryParse(Res_PhoneNumber.Text, out ulong getphn))
+            {
+                string formatString = String.Format("{0:(000)000-0000}", getphn);
+                Res_PhoneNumber.Text = formatString;
+
+            }
+            else
+            {
+                Res_PhoneNumber.Text = String.Empty;
+            }
+        }
+
+        private void Res_FoodStatus_Checked(object sender, RoutedEventArgs e)
+        {
+            if (Res_FoodStatus.IsChecked == true)
+            {
+                Res_FoodStatus.Content = "Food/Supply: Complete";
+                SelectedReservation.SupplyStatus = true;
+            }
+            else
+            {
+                Res_FoodStatus.Content = "Food/Supply status?";
+                SelectedReservation.SupplyStatus = false;
+            }
+        }
+
+        private void SendSMS()
+        {
+            string name = $"{SelectedReservation.FirstName} {SelectedReservation.LastName}";
+
+            string end_num = SelectedReservation.CardNumber.Substring(SelectedReservation.CardNumber.Length - Math.Min(4, SelectedReservation.CardNumber.Length));
+
+            if (Res_SendSMS.IsChecked == true)
+            {
+                string buildMesage = $"Hello {name}! Your unique ID#{SelectedReservation.Id} Total bill of ${SelectedReservation.TotalBill} is charged on your card # ending-{end_num}";
+
+                MessageBox.Show(buildMesage, "SMS Sent", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

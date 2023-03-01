@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="Hotel_Management___FrontEnd.TODOTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel_Management___FrontEnd"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1200" Loaded="UserControl_Loaded">
+    <Grid x:Name="TODOGrid" Background="WhiteSmoke">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Margin="5,125,5,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2">Name</Label>
+            <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="First Name" Text="{Binding Path=FirstName, Mode=TwoWay}" x:Name="Res_FirstName" Grid.Row="1" Grid.Column="0" BorderBrush="#FFABADB3" IsEnabled="False"  />
+            <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Last Name" Text="{Binding Path=LastName, Mode=TwoWay}" x:Name="Res_LastName" Grid.Row="1" Grid.Column="1" BorderBrush="#FFABADB3" IsEnabled="False" ></TextBox>
+
+            <Label Grid.Row="2" Grid.ColumnSpan="2">Phone Number</Label>
+            <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Phone Number" Text="{Binding Path=PhoneNumber, Mode=TwoWay}"  x:Name="Res_PhoneNumber" Grid.Row="3" Grid.ColumnSpan="2"  BorderBrush="#FFABADB3" IsEnabled="False" ></TextBox>
+
+            <Label Grid.Row="4" Grid.Column="0">Room Type</Label>
+            <Label Grid.Row="4" Grid.Column="1">Floor #</Label>
+            <TextBox Margin="5 2" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="RoomType" Text="{Binding Path=RoomType , Mode=TwoWay}" x:Name="Res_RoomType" Grid.Row="5" Grid.Column="0"  BorderBrush="#FFABADB3" IsEnabled="False" ></TextBox>
+            <TextBox Margin="5 2" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Floor #" Text="{Binding Path=RoomFloor , Mode=TwoWay}" x:Name="Res_RoomFloor" Grid.Row="5" Grid.Column="1"  BorderBrush="#FFABADB3" IsEnabled="False" ></TextBox>
+
+            <Label Grid.Row="6" Grid.ColumnSpan="2">Room #</Label>
+            <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Room #" Text="{Binding Path=RoomNumber, Mode=TwoWay}"  x:Name="Res_RoomNumber" Grid.Row="7" Grid.ColumnSpan="2"  BorderBrush="#FFABADB3" IsEnabled="False" ></TextBox>
+
+        </Grid>
+        <Grid Grid.Column="1" Margin="5,93,5,5" Background="WhiteSmoke">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Todo" />
+            <Label Grid.Row="1" Grid.Column="0">Breakfast</Label>
+            <Label Grid.Row="1" Grid.Column="1">Lunch</Label>
+            <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Breakfast" Text="{Binding Path=BreakFast, Mode=TwoWay}" x:Name="Res_Breakfast" Grid.Row="2" Grid.Column="0" BorderBrush="#FFABADB3" IsEnabled="False" />
+            <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Lunch" Text="{Binding Path=Lunch, Mode=TwoWay}" x:Name="Res_Lunch" Grid.Row="2" Grid.Column="1" BorderBrush="#FFABADB3" IsEnabled="False"  ></TextBox>
+
+            <Label Grid.Row="3" Grid.ColumnSpan="2">Dinner</Label>
+            <TextBox  Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Dinner" Text="{Binding Path=Dinner, Mode=TwoWay}"  x:Name="Res_Dinner" Grid.Row="4" Grid.ColumnSpan="2"  BorderBrush="#FFABADB3" IsEnabled="False" ></TextBox>
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="5" Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Path=Cleaning, Mode=TwoWay}" x:Name="Res_Cleaning" Margin="10 0" IsEnabled="False" >Cleaning</CheckBox>
+                <CheckBox IsChecked="{Binding Path=Towel, Mode=TwoWay}" x:Name="Res_Towel" Margin="10 0" IsEnabled="False" >Towels</CheckBox>
+                <CheckBox IsChecked="{Binding Path=SSurprise, Mode=TwoWay}" x:Name="Res_SSurprice" Margin="10 0" IsEnabled="False" >Sweatest Surprise</CheckBox>
+            </StackPanel>
+
+            <CheckBox HorizontalAlignment="center" VerticalAlignment="center" Grid.Row="6" Grid.ColumnSpan="2" IsChecked="{Binding Path=SupplyStatus, Mode=TwoWay}" x:Name="Res_Supply" Margin="10 0" >Food Supply Status</CheckBox>
+
+            <Button Padding="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="7" Grid.ColumnSpan="2" Margin="123,0,0,0" Click="Button_Click">Change Food Selection</Button>
+        </Grid>
+        <Grid Grid.Column="2" Margin="5" Background="WhiteSmoke">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" Content="On The List" />
+            <ListBox x:Name="OverviewListBox" Grid.Row="1" Grid.RowSpan="9" SelectionChanged="OverviewListBox_SelectionChanged">
+
+            </ListBox>
+
+            <Button Name="btn_UpdateChanges"  Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="10" Grid.ColumnSpan="2" Click="btn_UpdateChanges_Click">Update Changes</Button>
+        </Grid>
+    </Grid>
+</UserControl>

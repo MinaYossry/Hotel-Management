@@ -50,6 +50,9 @@ namespace Hotel_Management___FrontEnd
             else if (Kitchen.Validate(UserName, Password, Login_Manager_Context.Kitchens))
             {
                 this.Hide();
+                RoomService roomService = new RoomService();
+                roomService.Show();
+                roomService.Closed += (sender, e) => Close();
             }
             else
                 MessageBox.Show("Failed");

@@ -65,4 +65,8 @@
     <Resource Include="assets\toast.PNG" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="HotelReservation\" />
+  </ItemGroup>
+
 </Project>
