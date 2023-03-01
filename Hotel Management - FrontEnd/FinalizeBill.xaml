@@ -27,7 +27,7 @@
                 <Label Name="Label_CurrentBill" DockPanel.Dock="Top">$0 USD</Label>
                 <Label Name="Label_TotalBill" DockPanel.Dock="Bottom">$0 USD</Label>
                 <Label Name="Label_Tax" DockPanel.Dock="Bottom">$0 USD</Label>
-                <Label Name="Label_FoodBill" DockPanel.Dock="Top">$0 USD</Label>
+                <Label  Name="Label_FoodBill" DockPanel.Dock="Top">$0 USD</Label>
             </DockPanel>
             <DockPanel DockPanel.Dock="Left" LastChildFill="False">
                 <Label DockPanel.Dock="Bottom" FontWeight="Bold">Total</Label>
@@ -37,47 +37,21 @@
         <DockPanel Margin="20,20,20,20" Grid.Row="1" Grid.ColumnSpan="3">
             <Label DockPanel.Dock="Top">Payment</Label>
             <DockPanel DockPanel.Dock="Top">
-                <ComboBox DockPanel.Dock="Left" x:Name="PaymentType" VerticalAlignment="Top"  Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="Payment Type" MinWidth="100">
-                    <ComboBoxItem Content="Debit"/>
-                    <ComboBoxItem Content="Credit"/>
+                <ComboBox SelectedValue="{Binding Path=PaymentType, Mode=TwoWay}" DockPanel.Dock="Left" x:Name="PaymentType" VerticalAlignment="Top"  Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="Payment Type" MinWidth="100">
                 </ComboBox>
-                <local:CueBannerTextBox x:Name="CC_Number"  DockPanel.Dock="Right" CueBanner="9999 - 9999 - 9999 - 9999" LostFocus="CueBannerTextBox_LostFocus"></local:CueBannerTextBox>
+                <TextBox Text="{Binding Path=CardNumber, Mode=TwoWay}" Margin="5 2" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="9999-9999-9999-9999" x:Name="CC_Number"  DockPanel.Dock="Right" LostFocus="CueBannerTextBox_LostFocus" BorderThickness="2,2,2,2"></TextBox>
 
             </DockPanel>
 
             <DockPanel Margin="5" DockPanel.Dock="Top">
                 <ComboBox x:Name="CC_Month" VerticalAlignment="Top"  Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="MM" MinWidth="40">
-                    <ComboBoxItem Content="01"/>
-                    <ComboBoxItem Content="02"/>
-                    <ComboBoxItem Content="03"/>
-                    <ComboBoxItem Content="04"/>
-                    <ComboBoxItem Content="05"/>
-                    <ComboBoxItem Content="06"/>
-                    <ComboBoxItem Content="07"/>
-                    <ComboBoxItem Content="08"/>
-                    <ComboBoxItem Content="09"/>
-                    <ComboBoxItem Content="10"/>
-                    <ComboBoxItem Content="11"/>
-                    <ComboBoxItem Content="12"/>
                 </ComboBox>
                 <Label>/</Label>
                 <ComboBox x:Name="CC_Year" VerticalAlignment="Top"  Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="YY" MinWidth="40">
-                    <ComboBoxItem Content="14"/>
-                    <ComboBoxItem Content="15"/>
-                    <ComboBoxItem Content="16"/>
-                    <ComboBoxItem Content="17"/>
-                    <ComboBoxItem Content="18"/>
-                    <ComboBoxItem Content="19"/>
-                    <ComboBoxItem Content="20"/>
-                    <ComboBoxItem Content="21"/>
-                    <ComboBoxItem Content="22"/>
-                    <ComboBoxItem Content="23"/>
-                    <ComboBoxItem Content="24"/>
-                    <ComboBoxItem Content="26"/>
                 </ComboBox>
-                <local:CueBannerTextBox x:Name="CC_CVC" Margin="2" CueBanner="CVC" MinWidth="40"></local:CueBannerTextBox>
+                <TextBox Text="{Binding Path=CardCvc, Mode=TwoWay}" Margin="5 2" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="CVC" x:Name="CC_CVC"  MinWidth="40" BorderThickness="2,2,2,2"></TextBox>
                 <Label>Card Type:</Label>
-                <Label Name="CC_Type" MinWidth="50">Unknown</Label>
+                <Label Content="{Binding Path=CardType, Mode=TwoWay}" Name="CC_Type" MinWidth="50"></Label>
                 <Button x:Name="btn_Next" IsDefault="True" DockPanel.Dock="Top" Click="Button_Click">Next</Button>
             </DockPanel>
         </DockPanel>

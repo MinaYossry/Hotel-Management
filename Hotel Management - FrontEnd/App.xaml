@@ -27,6 +27,7 @@
                         <ControlTemplate TargetType="{x:Type local:CueBannerTextBox}">
                             <Grid>
                                 <TextBox x:Name="PART_TextBox"
+                                         Text="{TemplateBinding Text}"
                                          Height="{TemplateBinding Height}"
                              Margin="{TemplateBinding Margin}"
                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -41,7 +42,6 @@
                              IsReadOnly="{TemplateBinding IsReadOnly}"
                              SelectionBrush="{TemplateBinding SelectionBrush}"
                              SelectionTextBrush="{TemplateBinding SelectionTextBrush}"
-                             Text="{TemplateBinding Text}"
                              TextAlignment="{TemplateBinding TextAlignment}"
                              TextDecorations="{TemplateBinding TextDecorations}"
                              TextWrapping="{TemplateBinding TextWrapping}"
@@ -65,6 +65,64 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}"
+           x:Key="TextBoxWithPlaceHolderTheme">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border CornerRadius="10"
+                            Height="{Binding Height, ElementName=ThemeBox}"
+                            Width="{Binding Width, ElementName=ThemeBox}"
+                            Background="white">
+                                <Grid>
+                                    <TextBox Margin="1"
+                                     Width="{TemplateBinding Property=Width}"
+                                     Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource TemplatedParent}, 
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                     FontSize="{Binding FontSize, ElementName=ThemeBox}"
+                                     FontFamily="/Fonts/#Tajawal"
+                                     FontWeight="Medium"
+                                     Foreground="Black"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     VerticalContentAlignment="Center"
+                                     FlowDirection="LeftToRight"
+                                     Padding="5"
+                                     x:Name="ThemeBox"/>
+
+                                    <TextBlock IsHitTestVisible="False"
+                                       Text="{TemplateBinding Tag}"
+                                       Background="Transparent"
+                                       FontFamily="/Fonts/#Tajawal"
+                                       FontWeight="Medium"
+                                       VerticalAlignment="Center"
+                                       FlowDirection="LeftToRight"
+                                       Margin="10,0,0,0"
+                                       FontSize="{Binding FontSize, ElementName=ThemeBox}"
+                                       Foreground="LightGray"
+                                       Grid.Column="1">
+
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Path=Text, Source={x:Reference ThemeBox}}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
             </Style>
         </ResourceDictionary>
 

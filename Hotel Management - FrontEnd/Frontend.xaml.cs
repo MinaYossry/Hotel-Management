@@ -37,6 +37,9 @@ namespace Hotel_Management___FrontEnd
 
             UniversalSearchTap.Reservation_Context = reservation_Context;
             ReservationPageTap.Reservation_Context = reservation_Context;
+
+            ReservationPageTap.Res_SelectReservation.ItemsSource = reservations;
+            ReservationPageTap.Res_SelectReservation.SelectedValuePath = "Id";
         }
 
         private void InsertRooms(IEnumerable<Reservation> Rooms, ListBox Target)
@@ -83,17 +86,23 @@ namespace Hotel_Management___FrontEnd
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TabItem currentTab = e.AddedItems[0] as TabItem;
-            if (currentTab is not null && currentTab == RoomAvailable)
+            try
             {
-                RoomAvailibiltyTap.OccupiedRoomsPanel.Items.Clear();
-                RoomAvailibiltyTap.ReservedRoomsPanel.Items.Clear();
+                TabItem currentTab = e.AddedItems[0] as TabItem;
+                if (currentTab is not null && currentTab == RoomAvailable)
+                {
+                    RoomAvailibiltyTap.OccupiedRoomsPanel.Items.Clear();
+                    RoomAvailibiltyTap.ReservedRoomsPanel.Items.Clear();
 
-                var OccupiedRooms = reservations.Where(r => r.CheckIn);
-                var ReservedRooms = reservations.Where(r => !r.CheckIn);
+                    var OccupiedRooms = reservations.Where(r => r.CheckIn);
+                    var ReservedRooms = reservations.Where(r => !r.CheckIn);
 
-                InsertRooms(OccupiedRooms, RoomAvailibiltyTap.OccupiedRoomsPanel);
-                InsertRooms(ReservedRooms, RoomAvailibiltyTap.ReservedRoomsPanel);
+                    InsertRooms(OccupiedRooms, RoomAvailibiltyTap.OccupiedRoomsPanel);
+                    InsertRooms(ReservedRooms, RoomAvailibiltyTap.ReservedRoomsPanel);
+                }
+            }
+            catch
+            {
             }
         }
     }

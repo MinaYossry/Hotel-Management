@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Hotel_Management___FrontEnd
 {
@@ -21,123 +22,190 @@ namespace Hotel_Management___FrontEnd
     /// </summary>
     public partial class ReservationPage : UserControl
     {
+        private readonly List<string> Genders = new() { "Male", "Female", "Other" };
+
+        private readonly List<string> States = new ()
+        {
+            "Alabama",
+            "Alaska",
+            "Arizona",
+            "Arkansas",
+            "California",
+            "Colorado",
+            "Connecticut",
+            "Delaware",
+            "Florida",
+            "Georgia",
+            "Hawaii",
+            "Idaho",
+            "Illinois",
+            "Indiana",
+            "Iowa",
+            "Kansas",
+            "Kentucky",
+            "Louisiana",
+            "Maine",
+            "Maryland",
+            "Massachusetts",
+            "Michigan",
+            "Minnesota",
+            "Mississippi",
+            "Missouri",
+            "Montana",
+            "Nebraska",
+            "Nevada",
+            "New Hampshire",
+            "New Jersey",
+            "New Mexico",
+            "New York",
+            "North Carolina",
+            "North Dakota",
+            "Ohio",
+            "Oklahoma",
+            "Oregon",
+            "Pennsylvania",
+            "Rhode Island",
+            "South Carolina",
+            "South Dakota",
+            "Tennessee",
+            "Texas",
+            "Utah",
+            "Vermont",
+            "Virginia",
+            "Washington",
+            "West Virginia",
+            "Wisconsin",
+            "Wyoming"
+        };
+
+        private readonly List<int> NumberOfGuests = new () { 1, 2, 3, 4, 5, 6 };
+         
+        private readonly List<string> RoomTypes = new() { "Single", "Double", "Twin", "Dublex", "Suite" };
+
+        private readonly List<string> RoomFloorNumbers = new()  { "1", "2", "3", "4", "5" };
+
+        private readonly List<string> RoomsNumbers = new()
+        {
+                "101",
+                "102",
+                "103",
+                "104",
+                "105",
+                "106",
+                "107",
+                "108",
+                "109",
+                "110",
+                "201",
+                "202",
+                "203",
+                "204",
+                "205",
+                "206",
+                "207",
+                "208",
+                "209",
+                "210",
+                "301",
+                "302",
+                "303",
+                "304",
+                "305",
+                "306",
+                "307",
+                "308",
+                "309",
+                "310",
+                "401",
+                "402",
+                "403",
+                "404",
+                "405",
+                "406",
+                "407",
+                "408",
+                "409",
+                "410",
+                "501",
+                "502",
+                "503",
+                "504",
+                "505",
+                "506",
+                "507",
+                "508",
+                "509",
+                "510",
+        };
 
         public Reservation_Context Reservation_Context { get; set; }
 
         public int TotalAmount { get; set; }
-        public bool IsEditingReservation { get; set; }
-        public bool IsEditClicked { get; set; }
 
-        public string CC_PaymentType { get; set; }
-        public string CC_CardNumber { get; set; }
         public string CC_ExpireMonth { get; set; }
         public string CC_ExpireYear { get; set; }
-        public string CC_CardCVC { get; set; }
-        public string CC_CardType { get; set; }
-
-        private double FinalTotalAmount { get; set; } = 0.0;
-        private string MM_YY_Of_Card { get; set; }
 
         public int FoodBill { get; set; }
 
-        private int LunchCount { get; set; } = 0;
-        private int BreakfastCount { get; set; } = 0;
-        private int DinnerCount { get; set; } = 0;
-
-        private bool Cleaning { get; set; }
-        private bool Towels { get; set; }
-        private bool SweatestSurprice { get; set; }
-
+        private Reservation SelectedReservation { get; set; } = new() { BirthDay = "birth" };
 
         public ReservationPage()
         {
             InitializeComponent();
             Res_EntryDate.SelectedDate =  Res_EntryDate.DisplayDateStart = DateTime.Today;
             Res_DepartureDate.SelectedDate =  Res_DepartureDate.DisplayDateStart = DateTime.Today.AddDays(1);
+            ReservationGrid.DataContext = SelectedReservation;
 
+            Res_Gender.ItemsSource = Genders;
+            Res_State.ItemsSource = States;
+            Res_NoOfGuests.ItemsSource = NumberOfGuests;
+            Res_RoomType.ItemsSource = RoomTypes;
+            Res_Floor.ItemsSource = RoomFloorNumbers;
+            Res_RoomNumber.ItemsSource = RoomsNumbers;
         }
 
         private void btn_FoodMenu_Click(object sender, RoutedEventArgs e)
         {
             FoodMenu foodMenu = new FoodMenu();
 
-            if (IsEditingReservation)
+            foodMenu.DataContext = SelectedReservation;
+
+            foodMenu.Check_Breakfast.IsChecked = SelectedReservation.BreakFast != 0;
+            foodMenu.Check_Lunch.IsChecked = SelectedReservation.Lunch != 0;
+            foodMenu.Check_Dinner.IsChecked = SelectedReservation.Dinner != 0;
+
+            if(foodMenu.ShowDialog() == true)
             {
-                if (BreakfastCount > 0)
-                {
-                    foodMenu.Check_Breakfast.IsChecked = true;
-                    foodMenu.text_BreakfastCount.Text = BreakfastCount.ToString();
-                }
-
-                if (LunchCount > 0)
-                {
-                    foodMenu.Check_Lunch.IsChecked = true;
-                    foodMenu.text_LunchCount.Text = LunchCount.ToString();
-                }
-
-                if (DinnerCount > 0)
-                {
-                    foodMenu.Check_Dinner.IsChecked = true;
-                    foodMenu.text_DinnerCount.Text = DinnerCount.ToString();
-                }
-
-                foodMenu.Check_Cleaning.IsChecked = Cleaning;
-                foodMenu.Check_Towels.IsChecked = Towels;
-                foodMenu.Check_SweetestSurprise.IsChecked = SweatestSurprice;
-            }
-
-            if (foodMenu.ShowDialog() == true)
-            {
-
-                BreakfastCount = foodMenu.BreafastCount;
-                LunchCount = foodMenu.LunchCount;
-                DinnerCount = foodMenu.DinnerCount;
-
-                Cleaning = foodMenu.IsCleaning;
-                Towels = foodMenu.IsTowels;
-                SweatestSurprice = foodMenu.IsSweatestSurprise;
-
-                FoodBill = foodMenu.TotalFoodBill;
-                MessageBox.Show($"{foodMenu.TotalFoodBill}");
+                SelectedReservation.FoodBill = foodMenu.TotalFoodBill;
             }
         }
 
         private void btn_FinalizeBill_Click(object sender, RoutedEventArgs e)
         {
-            if (BreakfastCount == 0 && LunchCount == 0 && DinnerCount == 0 && !Cleaning && !Towels && !SweatestSurprice) 
+            if (SelectedReservation.BreakFast == 0 && SelectedReservation.Lunch == 0 && SelectedReservation.Dinner == 0 && !SelectedReservation.Cleaning && !SelectedReservation.Towel && !SelectedReservation.SSurprise) 
             {
-                Res_FoodStatus.IsChecked = true;
+                SelectedReservation.SupplyStatus = true;
             }
-            btn_Update.IsEnabled = true;
 
             if (CalculateBill())
             {
                 FinalizeBill finalizeBill = new FinalizeBill();
                 finalizeBill.TotalAmount = TotalAmount;
-                finalizeBill.FoodBill = FoodBill;
+                finalizeBill.FoodBill = SelectedReservation.FoodBill;
+                finalizeBill.DataContext = SelectedReservation;
 
-                if(IsEditingReservation)
-                {
-                    finalizeBill.PaymentType.SelectedItem = CC_PaymentType;
-                    finalizeBill.CC_Number.Text = CC_CardNumber;
-                    finalizeBill.CC_Month.SelectedItem = CC_ExpireMonth;
-                    finalizeBill.CC_Year.SelectedItem = CC_ExpireYear;
-                    finalizeBill.CC_CVC.Text = CC_CardCVC;
-                    finalizeBill.CC_Type.Content = CC_CardType;
-                }
-
+                finalizeBill.CC_Month.SelectedValue = CC_ExpireMonth;
+                finalizeBill.CC_Year.SelectedValue = CC_ExpireYear;
 
                 if (finalizeBill.ShowDialog() == true)
                 {
-                    FinalTotalAmount = finalizeBill.FinalTotalBill;
-                    CC_PaymentType = finalizeBill.PaymentType.Text;
-                    CC_CardNumber = finalizeBill.CC_Number.Text;
+                    SelectedReservation.TotalBill = finalizeBill.FinalTotalBill;
                     CC_ExpireMonth = finalizeBill.CC_Month.Text;
                     CC_ExpireYear = finalizeBill.CC_Year.Text;
-                    MM_YY_Of_Card = $"{CC_ExpireMonth}/{CC_ExpireYear}";
-                    CC_CardCVC = finalizeBill.CC_CVC.Text;
-                    CC_CardType = finalizeBill.CC_Type.Content.ToString();
-                    btn_Submit.Visibility = Visibility.Visible;
+                    SelectedReservation.CardExp = $"{CC_ExpireMonth}/{CC_ExpireYear}";
+
+                    if (btn_Update.IsVisible == false)
+                        btn_Submit.Visibility = Visibility.Visible;
                 }
                 else
                 {
@@ -157,27 +225,27 @@ namespace Hotel_Management___FrontEnd
 
         private bool CalculateBill()
         {
-            switch (Res_RoomType?.Text)
+            switch (SelectedReservation.RoomType)
             {
                 case "Single":
                     TotalAmount = 149;
-                    Res_Floor.SelectedItem = "1";
+                    Res_Floor.SelectedValue = "1";
                     break;
                 case "Double":
                     TotalAmount = 299;
-                    Res_Floor.SelectedItem = "2";
+                    Res_Floor.SelectedValue = "2";
                     break;
                 case "Twin":
                     TotalAmount = 349;
-                    Res_Floor.SelectedItem = "3";
+                    Res_Floor.SelectedValue = "3";
                     break;
                 case "Dublex":
                     TotalAmount = 399;
-                    Res_Floor.SelectedItem = "4";
+                    Res_Floor.SelectedValue = "4";
                     break;
                 case "Suite":
                     TotalAmount = 499;
-                    Res_Floor.SelectedItem = "5";
+                    Res_Floor.SelectedValue = "5";
                     break;
                 default:
                     MessageBox.Show("Must select room type");
@@ -214,7 +282,7 @@ namespace Hotel_Management___FrontEnd
                 && Res_RoomType.SelectedItem is not null
                 && Res_Floor.SelectedItem is not null
                 && Res_RoomNumber.SelectedItem is not null
-                && Res_EntryDate.SelectedDate < Res_DepartureDate.SelectedDate;
+                && Res_EntryDate.SelectedDate <= Res_DepartureDate.SelectedDate;
 
         }
 
@@ -222,52 +290,60 @@ namespace Hotel_Management___FrontEnd
         {
             if (AllDataIsValid())
             {
-                Reservation_Context.Add(CreateNewReservation());
-                Reservation_Context.SaveChanges();
+                try
+                {
+                    Reservation_Context.Add(SelectedReservation);
+                    if(Reservation_Context.SaveChanges() > 0)
+                    {
+                        MessageBox.Show($"Reservation with ID: {SelectedReservation.Id} was inserted successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show($"Couldn't make new reservation", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                }
             }
             else
                 MessageBox.Show("Must Enter All Fields", "Field Empty", MessageBoxButton.OK);
         }
 
-        private Reservation CreateNewReservation()
+
+        private void Res_SelectReservation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Reservation reservation = new Reservation();
+            SelectedReservation = e.AddedItems[0] as Reservation;
 
-            reservation.FirstName = Res_FirstName.Text;
-            reservation.LastName = Res_LastName.Text;
-            reservation.BirthDay = "Birthday";
-            reservation.Gender = Res_Gender.Text;
-            reservation.PhoneNumber = Res_PhoneNumber.Text;
-            reservation.EmailAddress = Red_Email.Text;
-            reservation.NumberGuest = int.Parse(Res_NoOfGuests.Text);
-            reservation.StreetAddress = Res_StreetAddress.Text;
-            reservation.AptSuite = Res_AptNumber.Text;
-            reservation.City = Res_City.Text;
-            reservation.State = Res_State.Text;
-            reservation.ZipCode = Res_ZipCode.Text;
-            reservation.RoomType = Res_RoomType.Text;
-            reservation.RoomFloor = Res_Floor.Text;
-            reservation.RoomNumber = Res_RoomNumber.Text;
-            reservation.TotalBill = FinalTotalAmount;
-            reservation.PaymentType = CC_PaymentType;
-            reservation.CardType = CC_CardType;
-            reservation.CardNumber = CC_CardNumber;
-            reservation.CardExp = MM_YY_Of_Card;
-            reservation.CardCvc = CC_CardCVC;
-            reservation.ArrivalTime = (DateTime)Res_EntryDate.SelectedDate;
-            reservation.LeavingTime = (DateTime)Res_DepartureDate.SelectedDate;
-            reservation.CheckIn = Res_CheckIn.IsChecked == true;
-            reservation.BreakFast = BreakfastCount;
-            reservation.Lunch = LunchCount;
-            reservation.Dinner = DinnerCount;
-            reservation.Cleaning = Cleaning;
-            reservation.Towel = Towels;
-            reservation.SSurprise = SweatestSurprice;
-            reservation.SupplyStatus = Res_FoodStatus.IsChecked == true;
-            reservation.FoodBill = FoodBill;
+            ReservationGrid.DataContext = SelectedReservation;
 
+            CC_ExpireMonth = SelectedReservation.CardExp.Substring(0, 2);
+            CC_ExpireYear = SelectedReservation.CardExp.Substring(3, 2);
+        }
 
-            return reservation;
+        private void btn_Update_Click(object sender, RoutedEventArgs e)
+        {
+                try
+                {
+                    if (Reservation_Context.SaveChanges() > 0)
+                    {
+                        MessageBox.Show($"Reservation with ID: {SelectedReservation.Id} was updated successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show($"Couldn't update reservation", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                }
+        }
+
+        private void btn_NewReservation_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedReservation = new() { BirthDay = "Birth" };
+
+            ReservationGrid.DataContext = SelectedReservation;
+
+            btn_Delete.Visibility = Visibility.Hidden;
+            btn_Update.Visibility = Visibility.Hidden;
+            Res_SelectReservation.Visibility = Visibility.Hidden;
         }
     }
 }
