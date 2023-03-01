@@ -1,5 +1,5 @@
-﻿using Login_DbContext.LoginDbContext;
-using Login_DbContext.Models;
+﻿using DatabaseContext.Context;
+using DatabaseContext.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
@@ -25,7 +25,7 @@ namespace Hotel_Management___FrontEnd
     /// </summary>
     public partial class MainWindow : Window
     {
-        Login_Manager Login_Manager_Context;
+        LoginContext Login_Manager_Context;
 
         public MainWindow()
         {
@@ -39,7 +39,7 @@ namespace Hotel_Management___FrontEnd
             var UserName = LoginUsername.Text;
             var Password = LoginPassword.Password;
 
-            if (Login_DbContext.Models.Frontend.Validate(UserName, Password, Login_Manager_Context.Frontends))
+            if (HotelUsers.Validate(UserName, Password, Login_Manager_Context.HotelUsers))
             {
                 this.Hide();
                 Frontend frontEndScreen = new();
@@ -47,7 +47,7 @@ namespace Hotel_Management___FrontEnd
 
                 frontEndScreen.Closed += (sender, e) => Close();
             }
-            else if (Kitchen.Validate(UserName, Password, Login_Manager_Context.Kitchens))
+            else if (KitchenUsers.Validate(UserName, Password, Login_Manager_Context.KitchenUsers))
             {
                 this.Hide();
                 RoomService roomService = new RoomService();

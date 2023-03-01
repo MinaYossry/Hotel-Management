@@ -39,7 +39,7 @@
             <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Last Name" Text="{Binding Path=LastName, Mode=TwoWay}" x:Name="Res_LastName" Grid.Row="1" Grid.Column="1" BorderBrush="#FFABADB3" ></TextBox>
 
             <Label Grid.Row="2" Grid.ColumnSpan="2">Birthdate</Label>
-            <DatePicker x:Name="Res_BirthDate" Grid.Row="3" Grid.ColumnSpan="2" Margin="10,0,10,5"></DatePicker>
+            <DatePicker SelectedDate="{Binding Path=Birthdate, Mode=TwoWay}" x:Name="Res_BirthDate" Grid.Row="3" Grid.ColumnSpan="2" Margin="10,0,10,5"></DatePicker>
             <Label Grid.Row="4" Grid.ColumnSpan="2">Gender</Label>
             <ComboBox  
                     SelectedValue="{Binding Path=Gender, Mode=TwoWay}"
@@ -59,7 +59,7 @@
                     x:Name="Res_State" Grid.Row="13" Grid.Column="0"
                     Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="State"/>
 
-            <TextBox Margin="5 2" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Phone Number" Text="{Binding Path=ZipCode, Mode=TwoWay}" x:Name="Res_ZipCode" Grid.Row="13" Grid.Column="1"  BorderBrush="#FFABADB3" ></TextBox>
+            <TextBox Margin="5 2" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Zip Code" Text="{Binding Path=ZipCode, Mode=TwoWay}" x:Name="Res_ZipCode" Grid.Row="13" Grid.Column="1"  BorderBrush="#FFABADB3" ></TextBox>
         </Grid>
         <Grid Grid.Column="1" Margin="5" Background="LightGray">
             <Grid.ColumnDefinitions>

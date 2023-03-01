@@ -1,5 +1,6 @@
-﻿using Microsoft.Identity.Client;
-using Reservation__DbContext.Models;
+﻿using DatabaseContext.Context;
+using DatabaseContext.Entities;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -140,7 +141,7 @@ namespace Hotel_Management___FrontEnd
                 "510",
         };
 
-        public Reservation_Context Reservation_Context { get; set; }
+        public ReservationContext Reservation_Context { get; set; }
 
         public int TotalAmount { get; set; }
 
@@ -149,7 +150,7 @@ namespace Hotel_Management___FrontEnd
 
         public int FoodBill { get; set; }
 
-        private Reservation SelectedReservation { get; set; } = new() { BirthDay = "birth" };
+        private Reservation SelectedReservation { get; set; } = new() { ArrivalTime = DateTime.Today, LeavingTime = DateTime.Today.AddDays(1) };
 
         public ReservationPage()
         {
@@ -322,8 +323,11 @@ namespace Hotel_Management___FrontEnd
 
             ReservationGrid.DataContext = SelectedReservation;
 
-            CC_ExpireMonth = SelectedReservation.CardExp.Substring(0, 2);
-            CC_ExpireYear = SelectedReservation.CardExp.Substring(3, 2);
+            if(SelectedReservation is not null)
+            {
+                CC_ExpireMonth = SelectedReservation.CardExp.Substring(0, 2);
+                CC_ExpireYear = SelectedReservation.CardExp.Substring(3, 2);
+            }
         }
 
         private void btn_Update_Click(object sender, RoutedEventArgs e)
@@ -344,7 +348,7 @@ namespace Hotel_Management___FrontEnd
 
         private void btn_NewReservation_Click(object sender, RoutedEventArgs e)
         {
-            SelectedReservation = new() { BirthDay = "Birth" };
+            SelectedReservation = new() {  ArrivalTime = DateTime.Today, LeavingTime = DateTime.Today.AddDays(1) };
 
             ReservationGrid.DataContext = SelectedReservation;
 
@@ -363,7 +367,7 @@ namespace Hotel_Management___FrontEnd
                 if (Reservation_Context.SaveChanges() > 0)
                 {
                     MessageBox.Show($"Reservation with ID: {Id} was Deleted successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    SelectedReservation = new() { BirthDay = "birth" };
+                    SelectedReservation = new() { ArrivalTime = DateTime.Today, LeavingTime = DateTime.Today.AddDays(1) };
                 }
             }
             catch

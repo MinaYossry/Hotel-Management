@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Reservation__DbContext.Models;
+﻿using DatabaseContext.Context;
+using DatabaseContext.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,7 @@ namespace Hotel_Management___FrontEnd
     /// </summary>
     public partial class Frontend : Window
     {
-        Reservation_Context reservation_Context;
+        ReservationContext reservation_Context;
         BindingList<Reservation> reservations;
 
         public Frontend()

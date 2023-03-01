@@ -1,4 +1,5 @@
-﻿using Reservation__DbContext.Models;
+﻿using DatabaseContext.Context;
+using DatabaseContext.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace Hotel_Management___FrontEnd
     /// </summary>
     public partial class TODOTab : UserControl
     {
-        public Reservation_Context Reservation_Context { get; set; }
+        public ReservationContext Reservation_Context { get; set; }
         Reservation SelectedReservation { get; set; }
 
         public TODOTab()

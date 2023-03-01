@@ -35,8 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Login - DbContext\Login - DbContext.csproj" />
-    <ProjectReference Include="..\Reservation - DbContext\Reservation - DbContext.csproj" />
+    <ProjectReference Include="..\DatabaseContext\DatabaseContext.csproj" />
   </ItemGroup>
 
   <ItemGroup>
