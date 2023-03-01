@@ -37,6 +37,8 @@ namespace Hotel_Management___FrontEnd
 
             TODOTabL.Reservation_Context = Reservation_Context;
             Overview.Reservation_Context = Reservation_Context;
+
+            Closed += (sender, e) => Reservation_Context.Dispose();
         }
     }
 }

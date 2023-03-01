@@ -41,6 +41,8 @@ namespace Hotel_Management___FrontEnd
 
             ReservationPageTap.Res_SelectReservation.ItemsSource = reservations;
             ReservationPageTap.Res_SelectReservation.SelectedValuePath = "Id";
+
+            Closed += (sender, e) => reservation_Context.Dispose();
         }
 
         private void InsertRooms(IEnumerable<Reservation> Rooms, ListBox Target)

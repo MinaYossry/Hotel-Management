@@ -32,6 +32,8 @@ namespace Hotel_Management___FrontEnd
             InitializeComponent();
 
             Login_Manager_Context = new();
+
+            Closed += (sender, e) => Login_Manager_Context.Dispose();
         }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
