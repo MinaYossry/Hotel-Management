@@ -9,29 +9,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="assets\breakfast.png" />
-    <None Remove="assets\Dinner_new_png.png" />
-    <None Remove="assets\edit.png" />
-    <None Remove="assets\food.PNG" />
-    <None Remove="assets\front.PNG" />
-    <None Remove="assets\frontend.png" />
-    <None Remove="assets\ic_action_discard.png" />
-    <None Remove="assets\ic_action_forward.png" />
-    <None Remove="assets\ic_action_new.png" />
-    <None Remove="assets\ic_action_next_item.png" />
-    <None Remove="assets\ic_action_previous_item.png" />
-    <None Remove="assets\ic_action_refresh.png" />
-    <None Remove="assets\ic_action_remove.png" />
-    <None Remove="assets\ic_action_save.png" />
-    <None Remove="assets\ic_action_search %282%29.png" />
-    <None Remove="assets\ic_action_search %283%29.png" />
-    <None Remove="assets\ic_action_search.png" />
-    <None Remove="assets\login.PNG" />
-    <None Remove="assets\lunch_new_png.png" />
-    <None Remove="assets\payment.PNG" />
-    <None Remove="assets\room.png" />
-    <None Remove="assets\roomservice.PNG" />
-    <None Remove="assets\toast.PNG" />
+    <None Remove="HotelReservation\assets\breakfast.png" />
+    <None Remove="HotelReservation\assets\Dinner_new_png.png" />
+    <None Remove="HotelReservation\assets\edit.png" />
+    <None Remove="HotelReservation\assets\food.PNG" />
+    <None Remove="HotelReservation\assets\front.PNG" />
+    <None Remove="HotelReservation\assets\frontend.png" />
+    <None Remove="HotelReservation\assets\ic_action_discard.png" />
+    <None Remove="HotelReservation\assets\ic_action_forward.png" />
+    <None Remove="HotelReservation\assets\ic_action_new.png" />
+    <None Remove="HotelReservation\assets\ic_action_next_item.png" />
+    <None Remove="HotelReservation\assets\ic_action_previous_item.png" />
+    <None Remove="HotelReservation\assets\ic_action_refresh.png" />
+    <None Remove="HotelReservation\assets\ic_action_remove.png" />
+    <None Remove="HotelReservation\assets\ic_action_save.png" />
+    <None Remove="HotelReservation\assets\ic_action_search %282%29.png" />
+    <None Remove="HotelReservation\assets\ic_action_search %283%29.png" />
+    <None Remove="HotelReservation\assets\ic_action_search.png" />
+    <None Remove="HotelReservation\assets\login.PNG" />
+    <None Remove="HotelReservation\assets\lunch_new_png.png" />
+    <None Remove="HotelReservation\assets\payment.PNG" />
+    <None Remove="HotelReservation\assets\room.png" />
+    <None Remove="HotelReservation\assets\roomservice.PNG" />
+    <None Remove="HotelReservation\assets\toast.PNG" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,33 +40,29 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="assets\breakfast.png" />
-    <Resource Include="assets\Dinner_new_png.png" />
-    <Resource Include="assets\edit.png" />
-    <Resource Include="assets\food.PNG" />
-    <Resource Include="assets\front.PNG" />
-    <Resource Include="assets\frontend.png" />
-    <Resource Include="assets\ic_action_discard.png" />
-    <Resource Include="assets\ic_action_forward.png" />
-    <Resource Include="assets\ic_action_new.png" />
-    <Resource Include="assets\ic_action_next_item.png" />
-    <Resource Include="assets\ic_action_previous_item.png" />
-    <Resource Include="assets\ic_action_refresh.png" />
-    <Resource Include="assets\ic_action_remove.png" />
-    <Resource Include="assets\ic_action_save.png" />
-    <Resource Include="assets\ic_action_search (2).png" />
-    <Resource Include="assets\ic_action_search (3).png" />
-    <Resource Include="assets\ic_action_search.png" />
-    <Resource Include="assets\login.PNG" />
-    <Resource Include="assets\lunch_new_png.png" />
-    <Resource Include="assets\payment.PNG" />
-    <Resource Include="assets\room.png" />
-    <Resource Include="assets\roomservice.PNG" />
-    <Resource Include="assets\toast.PNG" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="HotelReservation\" />
+    <Resource Include="HotelReservation\assets\breakfast.png" />
+    <Resource Include="HotelReservation\assets\Dinner_new_png.png" />
+    <Resource Include="HotelReservation\assets\edit.png" />
+    <Resource Include="HotelReservation\assets\food.PNG" />
+    <Resource Include="HotelReservation\assets\front.PNG" />
+    <Resource Include="HotelReservation\assets\frontend.png" />
+    <Resource Include="HotelReservation\assets\ic_action_discard.png" />
+    <Resource Include="HotelReservation\assets\ic_action_forward.png" />
+    <Resource Include="HotelReservation\assets\ic_action_new.png" />
+    <Resource Include="HotelReservation\assets\ic_action_next_item.png" />
+    <Resource Include="HotelReservation\assets\ic_action_previous_item.png" />
+    <Resource Include="HotelReservation\assets\ic_action_refresh.png" />
+    <Resource Include="HotelReservation\assets\ic_action_remove.png" />
+    <Resource Include="HotelReservation\assets\ic_action_save.png" />
+    <Resource Include="HotelReservation\assets\ic_action_search (2).png" />
+    <Resource Include="HotelReservation\assets\ic_action_search (3).png" />
+    <Resource Include="HotelReservation\assets\ic_action_search.png" />
+    <Resource Include="HotelReservation\assets\login.PNG" />
+    <Resource Include="HotelReservation\assets\lunch_new_png.png" />
+    <Resource Include="HotelReservation\assets\payment.PNG" />
+    <Resource Include="HotelReservation\assets\room.png" />
+    <Resource Include="HotelReservation\assets\roomservice.PNG" />
+    <Resource Include="HotelReservation\assets\toast.PNG" />
   </ItemGroup>
 
 </Project>
