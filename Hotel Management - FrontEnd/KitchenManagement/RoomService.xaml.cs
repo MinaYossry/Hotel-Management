@@ -26,8 +26,6 @@ namespace Hotel_Management___FrontEnd
 
         ReservationContext Reservation_Context { get; set; }
 
-        BindingList<Reservation> Reservations;
-
         public RoomService()
         {
             InitializeComponent();

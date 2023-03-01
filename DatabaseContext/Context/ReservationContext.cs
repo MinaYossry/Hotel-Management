@@ -1,4 +1,5 @@
-﻿using DatabaseContext.Entities;
+﻿using DatabaseContext.Configuration;
+using DatabaseContext.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,11 @@ namespace DatabaseContext.Context
             optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=HotelReservationDB;Integrated Security=True;Encrypt=False");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ReservationConfiguation());
+            base.OnModelCreating(modelBuilder);
+        }
         public virtual DbSet<Reservation> Reservations { get; set; }
     }
 }
