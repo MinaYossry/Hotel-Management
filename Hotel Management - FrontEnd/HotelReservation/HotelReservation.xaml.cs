@@ -24,63 +24,30 @@ namespace Hotel_Management___FrontEnd
     /// </summary>
     public partial class Frontend : Window
     {
-        ReservationContext reservation_Context;
-        BindingList<Reservation> reservations;
+        ReservationContext Reservation_Context;
+        BindingList<Reservation> Reservations;
 
         public Frontend()
         {
             InitializeComponent();
-            reservation_Context = new();
+            Reservation_Context = new();
 
-            reservation_Context.Reservations.Load();
-            reservations = reservation_Context.Reservations.Local.ToBindingList();
-            ReservationDataGrid.ItemsSource = reservations;
+            Reservation_Context.Reservations.Load();
+            Reservations = Reservation_Context.Reservations.Local.ToBindingList();
+            ReservationDataGrid.ItemsSource = Reservations;
 
-            UniversalSearchTap.Reservation_Context = reservation_Context;
-            ReservationPageTap.Reservation_Context = reservation_Context;
+            UniversalSearchTap.Reservation_Context = Reservation_Context;
+            ReservationPageTap.Reservation_Context = Reservation_Context;
 
-            ReservationPageTap.Res_SelectReservation.ItemsSource = reservations;
+            RoomAvailibiltyTab.Reservation_Context = Reservation_Context;
+
+            ReservationPageTap.Res_SelectReservation.ItemsSource = Reservations;
             ReservationPageTap.Res_SelectReservation.SelectedValuePath = "Id";
 
-            Closed += (sender, e) => reservation_Context.Dispose();
+            Closed += (sender, e) => Reservation_Context.Dispose();
         }
 
-        private void InsertRooms(IEnumerable<Reservation> Rooms, ListBox Target)
-        {
-
-            foreach (var Room in Rooms)
-            {
-                Target.Items.Add(CreateRow(Room));
-            }
-        }
-
-        private UniformGrid CreateRow(Reservation Room)
-        {
-            UniformGrid NewItem = new();
-            NewItem.Rows = 1;
-            Label RoomNo = new();
-            RoomNo.Content = Room.RoomNumber.Trim();
-
-            Label RoomType = new();
-            RoomType.Content = Room.RoomType.Trim();
-
-            Label ID = new();
-            ID.Content = Room.Id;
-
-            Label RoomName = new();
-            RoomName.Content = $"{Room.FirstName.Trim()} {Room.LastName.Trim()}";
-
-            Label PhoneNo = new();
-            PhoneNo.Content = Room.PhoneNumber.Trim();
-
-            NewItem.Children.Add(RoomNo);
-            NewItem.Children.Add(RoomType);
-            NewItem.Children.Add(ID);
-            NewItem.Children.Add(RoomName);
-            NewItem.Children.Add(PhoneNo);
-
-            return NewItem;
-        }
+        
 
         private void ReservationPage_Loaded(object sender, RoutedEventArgs e)
         {
@@ -94,14 +61,7 @@ namespace Hotel_Management___FrontEnd
                 TabItem currentTab = e.AddedItems[0] as TabItem;
                 if (currentTab is not null && currentTab == RoomAvailable)
                 {
-                    RoomAvailibiltyTap.OccupiedRoomsPanel.Items.Clear();
-                    RoomAvailibiltyTap.ReservedRoomsPanel.Items.Clear();
-
-                    var OccupiedRooms = reservations.Where(r => r.CheckIn);
-                    var ReservedRooms = reservations.Where(r => !r.CheckIn);
-
-                    InsertRooms(OccupiedRooms, RoomAvailibiltyTap.OccupiedRoomsPanel);
-                    InsertRooms(ReservedRooms, RoomAvailibiltyTap.ReservedRoomsPanel);
+                    
                 }
             }
             catch

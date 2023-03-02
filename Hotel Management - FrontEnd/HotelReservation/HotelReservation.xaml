@@ -47,7 +47,7 @@
                         <GradientStop Color="#FFFFFDFD" Offset="1"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
-                <local:RoomAvailibiltyTap x:Name="RoomAvailibiltyTap"/>
+                <local:RoomAvailibiltyTap x:Name="RoomAvailibiltyTab"/>
 
             </TabItem>
         </TabControl>

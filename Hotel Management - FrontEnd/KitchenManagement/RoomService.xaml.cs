@@ -25,16 +25,19 @@ namespace Hotel_Management___FrontEnd
     {
 
         ReservationContext Reservation_Context { get; set; }
+        List<Reservation> ReservationList { get; set; }
 
         public RoomService()
         {
             InitializeComponent();
             Reservation_Context = new();
 
-            Reservation_Context.Reservations.Load();
+            ReservationList = Reservation_Context.Reservations.Where(res => res.CheckIn && !res.SupplyStatus).ToList();
 
             TODOTabL.Reservation_Context = Reservation_Context;
-            Overview.Reservation_Context = Reservation_Context;
+            TODOTabL.ReservationList = ReservationList;
+
+            Overview.ReservationList = ReservationList;
 
             Closed += (sender, e) => Reservation_Context.Dispose();
         }

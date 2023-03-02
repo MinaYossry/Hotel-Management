@@ -12,7 +12,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <DockPanel Margin="5" Grid.Row="0">
-            <Button Style="{StaticResource GreenButton}" DockPanel.Dock="Right" Width="100" Click="Button_Click" >Search</Button>
+            <Button IsDefault="True" Style="{StaticResource GreenButton}" DockPanel.Dock="Right" Width="100" Click="Button_Click" >Search</Button>
             <TextBox DockPanel.Dock="Left" Name="SearcBox" Margin="5 0"></TextBox>
         </DockPanel>
         <DataGrid x:Name="SearchResultDataGrid" Margin="5" Grid.Row="1">

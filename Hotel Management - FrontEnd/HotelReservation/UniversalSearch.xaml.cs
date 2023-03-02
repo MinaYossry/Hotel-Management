@@ -26,6 +26,8 @@ namespace Hotel_Management___FrontEnd
         public UniversalSearch()
         {
             InitializeComponent();
+
+            Loaded += (sender, e) => SearcBox.Focus();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,7 +36,7 @@ namespace Hotel_Management___FrontEnd
 
             if (SearchText != "")
             {
-                var SearchResult = (from Room in Reservation_Context.Reservations
+                var SearchResult = from Room in Reservation_Context.Reservations.Local
                                    where Room.Id.ToString().Contains(SearchText)
                                    || Room.LastName.Contains(SearchText)
                                    || Room.FirstName.Contains(SearchText)
@@ -45,7 +47,7 @@ namespace Hotel_Management___FrontEnd
                                    || Room.RoomType.Contains(SearchText)
                                    || Room.EmailAddress.Contains(SearchText)
                                    || Room.PhoneNumber.Contains(SearchText)
-                                   select Room).ToList();
+                                   select Room;
 
                 SearchResultDataGrid.ItemsSource = SearchResult;
             }

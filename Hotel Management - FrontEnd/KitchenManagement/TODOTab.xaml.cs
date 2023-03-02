@@ -24,6 +24,7 @@ namespace Hotel_Management___FrontEnd
     {
         public ReservationContext Reservation_Context { get; set; }
         Reservation SelectedReservation { get; set; }
+        public List<Reservation> ReservationList { get; set; }
 
         public TODOTab()
         {
@@ -40,7 +41,9 @@ namespace Hotel_Management___FrontEnd
                     if (Reservation_Context.SaveChanges() > 0)
                     {
                         MessageBox.Show($"Reservation with ID: {SelectedReservation.Id} was updated successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        OverviewListBox.ItemsSource = Reservation_Context.Reservations.Local.Where(res => res.CheckIn && !res.SupplyStatus).ToList();
+                        ReservationList.Remove(SelectedReservation);
+                        OverviewListBox.ItemsSource = null;
+                        OverviewListBox.ItemsSource = ReservationList;
                         OverviewListBox.SelectedIndex = 0;
                     }
                 }
@@ -86,7 +89,7 @@ namespace Hotel_Management___FrontEnd
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            OverviewListBox.ItemsSource = Reservation_Context.Reservations.Local.Where(res => res.CheckIn && !res.SupplyStatus).ToList();
+            OverviewListBox.ItemsSource = ReservationList;
             OverviewListBox.SelectedIndex = 0;
         }
     }

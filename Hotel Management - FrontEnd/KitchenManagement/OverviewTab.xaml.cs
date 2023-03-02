@@ -1,4 +1,5 @@
 ﻿using DatabaseContext.Context;
+using DatabaseContext.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace Hotel_Management___FrontEnd
     /// </summary>
     public partial class OverviewTab : UserControl
     {
-        public ReservationContext Reservation_Context { get; set; }
+        public List<Reservation> ReservationList { get; set; }
 
         public OverviewTab()
         {
@@ -30,7 +31,7 @@ namespace Hotel_Management___FrontEnd
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            OverviewDataGrid.ItemsSource = Reservation_Context.Reservations.Local.Where(res => res.CheckIn && !res.SupplyStatus).ToList();
+            OverviewDataGrid.ItemsSource = ReservationList;
         }
     }
 }
