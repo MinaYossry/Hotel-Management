@@ -321,10 +321,10 @@ namespace Hotel_Management___FrontEnd
         {
             SelectedReservation = e.AddedItems[0] as Reservation;
 
-            ReservationGrid.DataContext = SelectedReservation;
 
             if(SelectedReservation is not null)
             {
+                ReservationGrid.DataContext = SelectedReservation;
                 CC_ExpireMonth = SelectedReservation.CardExp.Substring(0, 2);
                 CC_ExpireYear = SelectedReservation.CardExp.Substring(3, 2);
             }
@@ -359,15 +359,15 @@ namespace Hotel_Management___FrontEnd
 
         private void btn_Delete_Click(object sender, RoutedEventArgs e)
         {
-            int Id = SelectedReservation.Id;
+            Reservation DeletedReservation = SelectedReservation;
 
             try
             {
-                Reservation_Context.Remove(SelectedReservation);
+                Res_SelectReservation.SelectedIndex = 0;
+                Reservation_Context.Remove(DeletedReservation);
                 if (Reservation_Context.SaveChanges() > 0)
                 {
-                    MessageBox.Show($"Reservation with ID: {Id} was Deleted successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    SelectedReservation = new() { ArrivalTime = DateTime.Today, LeavingTime = DateTime.Today.AddDays(1) };
+                    MessageBox.Show($"Reservation with ID: {DeletedReservation.Id} was Deleted successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch

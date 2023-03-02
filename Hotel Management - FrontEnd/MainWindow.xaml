@@ -30,7 +30,7 @@
                 <Label Margin="5">Password  : </Label>
                 <PasswordBox x:Name="LoginPassword" Padding="5" Margin="6" BorderBrush="#FFABADB3" InputScope="Password" ></PasswordBox>
             </DockPanel>
-            <Button IsDefault="True" x:Name="LoginBtn" Margin="5"  Width="264" Height="39" Click="LoginBtn_Click">Login</Button>
+            <Button  Style="{StaticResource GreenButton}" IsDefault="True" x:Name="LoginBtn" Margin="5"  Width="264" Height="39" Click="LoginBtn_Click">Login</Button>
         </StackPanel>
 
     </Grid>

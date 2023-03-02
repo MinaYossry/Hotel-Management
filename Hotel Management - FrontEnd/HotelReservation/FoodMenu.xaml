@@ -61,7 +61,7 @@
                 </UniformGrid>
             </Grid>
             <DockPanel Margin="5" Grid.Column="1" LastChildFill="True">
-                <Button x:Name="btn_Submit" IsDefault="True" DockPanel.Dock="Bottom" Margin="5" Click="btn_Submit_Click">Next</Button>
+                <Button Style="{StaticResource GreenButton}" x:Name="btn_Submit" IsDefault="True" DockPanel.Dock="Bottom" Margin="5" Click="btn_Submit_Click">Next</Button>
                 <DockPanel VerticalAlignment="Stretch" DockPanel.Dock="Top" Margin="5" Background="LightGray" HorizontalAlignment="Stretch" >
                     <Label DockPanel.Dock="Top" Margin="5">Special Needs</Label>
                     <CheckBox IsChecked="{Binding Path=Cleaning, Mode=TwoWay}" x:Name="Check_Cleaning" DockPanel.Dock="Top" Margin="15">Cleaning</CheckBox>

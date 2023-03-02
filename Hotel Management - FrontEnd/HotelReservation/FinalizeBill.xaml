@@ -52,7 +52,7 @@
                 <TextBox Text="{Binding Path=CardCvc, Mode=TwoWay}" Margin="5 2" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="CVC" x:Name="CC_CVC"  MinWidth="40" BorderThickness="2,2,2,2"></TextBox>
                 <Label>Card Type:</Label>
                 <Label Content="{Binding Path=CardType, Mode=TwoWay}" Name="CC_Type" MinWidth="50"></Label>
-                <Button x:Name="btn_Next" IsDefault="True" DockPanel.Dock="Top" Click="Button_Click">Next</Button>
+                <Button Style="{StaticResource GreenButton}" x:Name="btn_Next" IsDefault="True" DockPanel.Dock="Top" Click="Button_Click">Next</Button>
             </DockPanel>
         </DockPanel>
     </Grid>

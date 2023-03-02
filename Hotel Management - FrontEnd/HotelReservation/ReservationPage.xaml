@@ -34,30 +34,30 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.ColumnSpan="2">Name</Label>
+            <Label VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2">Name</Label>
             <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="First Name" Text="{Binding Path=FirstName, Mode=TwoWay}" x:Name="Res_FirstName" Grid.Row="1" Grid.Column="0" BorderBrush="#FFABADB3" />
             <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Last Name" Text="{Binding Path=LastName, Mode=TwoWay}" x:Name="Res_LastName" Grid.Row="1" Grid.Column="1" BorderBrush="#FFABADB3" ></TextBox>
 
-            <Label Grid.Row="2" Grid.ColumnSpan="2">Birthdate</Label>
-            <DatePicker SelectedDate="{Binding Path=BirthDay, Mode=TwoWay}" x:Name="Res_BirthDate" Grid.Row="3" Grid.ColumnSpan="2" Margin="10,0,10,5"></DatePicker>
-            <Label Grid.Row="4" Grid.ColumnSpan="2">Gender</Label>
-            <ComboBox  
+            <Label VerticalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="2">Birthdate</Label>
+            <DatePicker  SelectedDate="{Binding Path=BirthDay, Mode=TwoWay}" x:Name="Res_BirthDate" Grid.Row="3" Grid.ColumnSpan="2" Padding="5"></DatePicker>
+            <Label VerticalAlignment="Center" Grid.Row="4" Grid.ColumnSpan="2">Gender</Label>
+            <ComboBox Style="{StaticResource RoundedComboBoxStyle}" 
                     SelectedValue="{Binding Path=Gender, Mode=TwoWay}"
                     x:Name="Res_Gender" Grid.Row="5" Grid.ColumnSpan="2"
-                    Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="Gender"/>   
+                    Margin="2" IsEditable="True" Focusable="False" IsReadOnly="True" Text="Gender"/>   
             
-            <Label Grid.Row="6" Grid.ColumnSpan="2">Phone Number</Label>
+            <Label VerticalAlignment="Center" Grid.Row="6" Grid.ColumnSpan="2">Phone Number</Label>
             <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Phone Number" Text="{Binding Path=PhoneNumber, Mode=TwoWay}"  x:Name="Res_PhoneNumber" Grid.Row="7" Grid.ColumnSpan="2"  BorderBrush="#FFABADB3" LostFocus="Res_PhoneNumber_LostFocus" ></TextBox>
-            <Label Grid.Row="8" Grid.ColumnSpan="2">Email</Label>
+            <Label VerticalAlignment="Center" Grid.Row="8" Grid.ColumnSpan="2">Email</Label>
             <TextBox Margin="5 0" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Email Address" Text="{Binding Path=EmailAddress, Mode=TwoWay}" x:Name="Red_Email" Grid.Row="9" Grid.ColumnSpan="2"  BorderBrush="#FFABADB3" ></TextBox>
-            <Label Grid.Row="10" Grid.ColumnSpan="2">Adress</Label>
+            <Label VerticalAlignment="Center" Grid.Row="10" Grid.ColumnSpan="2">Adress</Label>
             <TextBox Margin="5 3" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Street Address" Text="{Binding Path=StreetAddress, Mode=TwoWay}" x:Name="Res_StreetAddress" Grid.Row="11" Grid.ColumnSpan="2"  BorderBrush="#FFABADB3" ></TextBox>
             <TextBox Margin="5 2" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Apt/Suite No." Text="{Binding Path=AptSuite , Mode=TwoWay}" x:Name="Res_AptNumber" Grid.Row="12" Grid.Column="0"  BorderBrush="#FFABADB3" ></TextBox>
             <TextBox Margin="5 2" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="City" Text="{Binding Path=City , Mode=TwoWay}" x:Name="Res_City" Grid.Row="12" Grid.Column="1"  BorderBrush="#FFABADB3" ></TextBox>
-            <ComboBox  
+            <ComboBox  Style="{StaticResource RoundedComboBoxStyle}"
                     SelectedValue="{Binding Path=State, Mode=TwoWay}"
                     x:Name="Res_State" Grid.Row="13" Grid.Column="0"
-                    Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="State"/>
+                    Margin="2" IsEditable="True" Focusable="False" IsReadOnly="True" Text="State"/>
 
             <TextBox Margin="5 2" Style="{StaticResource TextBoxWithPlaceHolderTheme}" Tag="Zip Code" Text="{Binding Path=ZipCode, Mode=TwoWay}" x:Name="Res_ZipCode" Grid.Row="13" Grid.Column="1"  BorderBrush="#FFABADB3" ></TextBox>
         </Grid>
@@ -79,27 +79,27 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Your Choices" />
-            <ComboBox SelectedValue="{Binding Path=NumberGuest, Mode=TwoWay}" x:Name="Res_NoOfGuests" Height="35" Grid.Row="1" Grid.Column="0" Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="# of guests"/>
+            <Label VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" Content="Your Choices" />
+            <ComboBox Style="{StaticResource RoundedComboBoxStyle}" SelectedValue="{Binding Path=NumberGuest, Mode=TwoWay}" x:Name="Res_NoOfGuests"  Grid.Row="1" Grid.Column="0" Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="# of guests"/>
 
-            <ComboBox SelectedValue="{Binding Path=RoomType, Mode=TwoWay}" x:Name="Res_RoomType" Grid.Row="1" Grid.Column="1" Height="35"  Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="Room Type"/>
+            <ComboBox Style="{StaticResource RoundedComboBoxStyle}" SelectedValue="{Binding Path=RoomType, Mode=TwoWay}" x:Name="Res_RoomType" Grid.Row="1" Grid.Column="1"   Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="Room Type"/>
 
-            <ComboBox SelectedValue="{Binding Path=RoomFloor, Mode=TwoWay}" x:Name="Res_Floor" Height="35" Grid.Row="2" Grid.Column="0" Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="Floor"/>
+            <ComboBox Style="{StaticResource RoundedComboBoxStyle}" SelectedValue="{Binding Path=RoomFloor, Mode=TwoWay}" x:Name="Res_Floor" Grid.Row="2" Grid.Column="0" Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="Floor"/>
 
-            <ComboBox SelectedValue="{Binding Path=RoomNumber, Mode=TwoWay}" x:Name="Res_RoomNumber" Height="35" Grid.Row="2" Grid.Column="1" Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="#"/>
+            <ComboBox Style="{StaticResource RoundedComboBoxStyle}" SelectedValue="{Binding Path=RoomNumber, Mode=TwoWay}" x:Name="Res_RoomNumber"  Grid.Row="2" Grid.Column="1" Margin="5"  IsEditable="True" Focusable="False" IsReadOnly="True" Text="#"/>
 
-            <Label Grid.Row="3" Grid.ColumnSpan="2" Content="Entry Date" />
-            <DatePicker SelectedDate="{Binding Path=ArrivalTime, Mode=TwoWay}" x:Name="Res_EntryDate" Grid.Row="4" Grid.ColumnSpan="2" Margin="5" ></DatePicker>
-            <Label Grid.Row="5" Grid.ColumnSpan="2" Content="Departure Date" />
-            <DatePicker SelectedDate="{Binding Path=LeavingTime, Mode=TwoWay}" x:Name="Res_DepartureDate" Grid.Row="6" Grid.ColumnSpan="2" Margin="5" ></DatePicker>
-            <Button x:Name="btn_FoodMenu" Grid.Row="7" Grid.ColumnSpan="2" Margin="5" Click="btn_FoodMenu_Click" >Food and Menu</Button>
+            <Label VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" Content="Entry Date" />
+            <DatePicker Padding="5" SelectedDate="{Binding Path=ArrivalTime, Mode=TwoWay}" x:Name="Res_EntryDate" Grid.Row="4" Grid.ColumnSpan="2" Margin="5" ></DatePicker>
+            <Label VerticalAlignment="Center" Grid.Row="5" Grid.ColumnSpan="2" Content="Departure Date" />
+            <DatePicker Padding="5" SelectedDate="{Binding Path=LeavingTime, Mode=TwoWay}" x:Name="Res_DepartureDate" Grid.Row="6" Grid.ColumnSpan="2" Margin="5" ></DatePicker>
+            <Button Style="{StaticResource GreenButton}" x:Name="btn_FoodMenu" Grid.Row="7" Grid.ColumnSpan="2" Margin="5" Click="btn_FoodMenu_Click" >Food and Menu</Button>
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="5" Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal">
                 <CheckBox IsChecked="{Binding Path=CheckIn, Mode=TwoWay}" x:Name="Res_CheckIn" Margin="10 0">Chech In?</CheckBox>
                 <CheckBox  x:Name="Res_SendSMS" Margin="10 0">Send SMS?</CheckBox>
                 <CheckBox IsChecked="{Binding Path=SupplyStatus, Mode=TwoWay}" x:Name="Res_FoodStatus" Margin="10 0" IsEnabled="False" Checked="Res_FoodStatus_Checked" Unchecked="Res_FoodStatus_Checked">Food/Supply Status?</CheckBox>
             </StackPanel>
-            <Button x:Name="btn_FinalizeBill" Grid.Row="9" Grid.ColumnSpan="2" Margin="5" Click="btn_FinalizeBill_Click" >Finalize bill</Button>
-            <Button x:Name="btn_Submit" Grid.Row="10" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden" Click="btn_Submit_Click" >Submit</Button>
+            <Button Style="{StaticResource GreenButton}" x:Name="btn_FinalizeBill" Grid.Row="9" Grid.ColumnSpan="2" Margin="5" Click="btn_FinalizeBill_Click" >Finalize bill</Button>
+            <Button Style="{StaticResource GreenButton}" x:Name="btn_Submit" Grid.Row="10" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden" Click="btn_Submit_Click" >Submit</Button>
         </Grid>
         <Grid Grid.Column="2" Margin="5" Background="LightGray">
             <Grid.RowDefinitions>
@@ -118,10 +118,10 @@
             <ComboBox x:Name="Res_SelectReservation" Height="35" Grid.Row="1" Grid.RowSpan="6" VerticalAlignment="Top"  Margin="5" IsEditable="True" Focusable="False" IsReadOnly="True" Text="Select Reservation to edit" Visibility="Hidden" SelectionChanged="Res_SelectReservation_SelectionChanged">
 
             </ComboBox>
-            <Button x:Name="btn_Update" Grid.Row="7" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden" Click="btn_Update_Click" >Update</Button>
-            <Button x:Name="btn_Delete" Grid.Row="8" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden" Click="btn_Delete_Click" >Delete</Button>
-            <Button x:Name="btn_EditReservation" Grid.Row="9" Grid.ColumnSpan="2" Margin="5" Click="btn_EditReservation_Click" >Edit Existing Reservation</Button>
-            <Button x:Name="btn_NewReservation" Grid.Row="10" Grid.ColumnSpan="2" Margin="5" Click="btn_NewReservation_Click" >New Reservation</Button>
+            <Button Style="{StaticResource GreenButton}" x:Name="btn_Update" Grid.Row="7" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden" Click="btn_Update_Click" >Update</Button>
+            <Button Style="{StaticResource RedButton}" x:Name="btn_Delete" Grid.Row="8" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden" Click="btn_Delete_Click" >Delete</Button>
+            <Button Style="{StaticResource GreenButton}" x:Name="btn_EditReservation" Grid.Row="9" Grid.ColumnSpan="2" Margin="5" Click="btn_EditReservation_Click" >Edit Existing Reservation</Button>
+            <Button Style="{StaticResource GreenButton}" x:Name="btn_NewReservation" Grid.Row="10" Grid.ColumnSpan="2" Margin="5" Click="btn_NewReservation_Click" >New Reservation</Button>
         </Grid>
     </Grid>
 </UserControl>
