@@ -38,6 +38,7 @@ namespace Hotel_Management___FrontEnd
             TODOTabL.ReservationList = ReservationList;
 
             Overview.ReservationList = ReservationList;
+            TODOTabL.ReservationListChanged += Overview.Overview_ReservationListChanged;
 
             Closed += (sender, e) => Reservation_Context.Dispose();
         }

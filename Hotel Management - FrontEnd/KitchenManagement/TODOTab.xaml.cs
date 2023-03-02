@@ -26,10 +26,12 @@ namespace Hotel_Management___FrontEnd
         Reservation SelectedReservation { get; set; }
         public List<Reservation> ReservationList { get; set; }
 
+        public event EventHandler ReservationListChanged;
+
         public TODOTab()
         {
             InitializeComponent();
-            
+            ReservationListChanged += TODOTab_ReservationListChanged;
         }
 
         private void btn_UpdateChanges_Click(object sender, RoutedEventArgs e)
@@ -41,10 +43,11 @@ namespace Hotel_Management___FrontEnd
                     if (Reservation_Context.SaveChanges() > 0)
                     {
                         MessageBox.Show($"Reservation with ID: {SelectedReservation.Id} was updated successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        ReservationList.Remove(SelectedReservation);
-                        OverviewListBox.ItemsSource = null;
-                        OverviewListBox.ItemsSource = ReservationList;
-                        OverviewListBox.SelectedIndex = 0;
+                        if (SelectedReservation.SupplyStatus)
+                        {
+                            ReservationList.Remove(SelectedReservation);
+                            OnReservationListChanged();
+                        }
                     }
                 }
                 catch
@@ -53,6 +56,19 @@ namespace Hotel_Management___FrontEnd
 
                 }
             }
+        }
+
+
+        protected virtual void OnReservationListChanged()
+        {
+            ReservationListChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void TODOTab_ReservationListChanged(object sender, EventArgs e)
+        {
+            OverviewListBox.ItemsSource = null;
+            OverviewListBox.ItemsSource = ReservationList;
+            OverviewListBox.SelectedIndex = 0;
         }
 
         private void OverviewListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

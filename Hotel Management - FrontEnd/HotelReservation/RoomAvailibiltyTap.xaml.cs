@@ -32,14 +32,17 @@ namespace Hotel_Management___FrontEnd
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            OccupiedRoomsPanel.Items.Clear();
-            ReservedRoomsPanel.Items.Clear();
+            if (Reservation_Context is not null)
+            {
+                OccupiedRoomsPanel.Items.Clear();
+                ReservedRoomsPanel.Items.Clear();
 
-            var OccupiedRooms = Reservation_Context.Reservations.Local.Where(r => r.CheckIn);
-            var ReservedRooms = Reservation_Context.Reservations.Local.Where(r => !r.CheckIn);
+                var OccupiedRooms = Reservation_Context.Reservations.Local.Where(r => r.CheckIn);
+                var ReservedRooms = Reservation_Context.Reservations.Local.Where(r => !r.CheckIn);
 
-            InsertRooms(OccupiedRooms, OccupiedRoomsPanel);
-            InsertRooms(ReservedRooms, ReservedRoomsPanel);
+                InsertRooms(OccupiedRooms, OccupiedRoomsPanel);
+                InsertRooms(ReservedRooms, ReservedRoomsPanel);
+            }
         }
 
 

@@ -46,27 +46,5 @@ namespace Hotel_Management___FrontEnd
 
             Closed += (sender, e) => Reservation_Context.Dispose();
         }
-
-        
-
-        private void ReservationPage_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                TabItem currentTab = e.AddedItems[0] as TabItem;
-                if (currentTab is not null && currentTab == RoomAvailable)
-                {
-                    
-                }
-            }
-            catch
-            {
-            }
-        }
     }
 }

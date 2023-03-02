@@ -34,6 +34,7 @@ namespace Hotel_Management___FrontEnd
             Login_Manager_Context = new();
 
             Loaded += (sender, e) => LoginUsername.Focus();
+
             Closed += (sender, e) => Login_Manager_Context.Dispose();
         }
 

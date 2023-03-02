@@ -33,5 +33,11 @@ namespace Hotel_Management___FrontEnd
         {
             OverviewDataGrid.ItemsSource = ReservationList;
         }
+
+        public void Overview_ReservationListChanged(object sender, EventArgs e)
+        {
+            OverviewDataGrid.ItemsSource = null;
+            OverviewDataGrid.ItemsSource = ReservationList;
+        }
     }
 }

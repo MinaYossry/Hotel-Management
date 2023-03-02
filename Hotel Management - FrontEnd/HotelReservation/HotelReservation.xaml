@@ -12,7 +12,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" FontSize="36" FontWeight="Bold" Margin="0,-4,0,4">Hotel Reservation</Label>
-        <TabControl Grid.Row="1" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl Grid.Row="1">
             <TabItem IsSelected="True" Header="Reservation" BorderBrush="#FF06E824" BorderThickness="0,0,0,2">
                 <TabItem.Background>
                     <LinearGradientBrush EndPoint="0,1">
